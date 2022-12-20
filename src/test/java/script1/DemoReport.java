@@ -1,4 +1,4 @@
-package scripts;
+package script1;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
