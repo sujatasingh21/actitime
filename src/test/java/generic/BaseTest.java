@@ -33,21 +33,22 @@ public abstract class BaseTest implements IAutoConst{
 	public WebDriver driver;
 	public WebDriverWait wait;
 	public ExtentTest test;
-	
+	//set the webdriver property
 	static
 	{
-		WebDriverManager.chromedriver().setup();
-		WebDriverManager.firefoxdriver().setup();
+//		WebDriverManager.chromedriver().setup();
+//		WebDriverManager.firefoxdriver().setup();
+		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 	}
 	
 	@BeforeSuite
 	public void createReport() {
-		extent = new ExtentReports(REPORT_PATH);
+		extent = new ExtentReports(REPORT_PATH);//to generate report
 	}
 	
 	@AfterSuite
 	public void publishReport() {
-		extent.flush();
+		extent.flush();//flush the report
 	}
 	
 	@Parameters({"config"})
