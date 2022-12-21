@@ -24,7 +24,7 @@ public class Util {
 		return value;
 	}
 	
-	
+	//read the properties file
 	public static String getProperty(String path,String key)
 	{
 		String value="";

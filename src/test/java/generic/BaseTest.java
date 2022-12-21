@@ -105,22 +105,22 @@ public abstract class BaseTest implements IAutoConst{
 	@AfterMethod
 	public void closeApp(ITestResult result) throws IOException
 	{
-		
+		//if test case is failed :take the screenshot
 		int status = result.getStatus();//1-PASS 2-FAILED
 		if(status==2)
 		{
-			String errDetails = result.getThrowable().getMessage();
+			String errDetails = result.getThrowable().getMessage();//error details
 			String testName=result.getName();
 			test.log(LogStatus.FAIL, errDetails);
 		
-			TakesScreenshot t=(TakesScreenshot)driver;
+			TakesScreenshot t=(TakesScreenshot)driver;//to take screen  shot
 			File srcIMG = t.getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(srcIMG, new File("./target/"+testName+".png"));
+			FileUtils.copyFile(srcIMG, new File("./target/"+testName+".png"));//copy and save the file
 			String htmlcode = test.addScreenCapture(testName+".png");
 			test.log(LogStatus.FAIL, htmlcode);
 		}
 		
-		test.log(LogStatus.INFO, "close the Browser");
-		driver.quit();
+		test.log(LogStatus.INFO, "close the Browser");//status:close the browser
+		driver.quit();//close the brwser
 	}
 }
