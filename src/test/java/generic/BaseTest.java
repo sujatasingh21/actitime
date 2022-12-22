@@ -58,14 +58,14 @@ public abstract class BaseTest implements IAutoConst{
 		path="./properties/"+path;
 		test = extent.startTest(testMethod.getName());
 		test.log(LogStatus.INFO, "property file:"+path);
-		
+		//reading the alue from properties file
 		String useGrid =  Util.getProperty(path,"USEGRID");
 		String remote =   Util.getProperty(path,"REMOTE");
 		String browser = Util.getProperty(path,"BROWSER");
 		String appUrl = Util.getProperty(path,"APPURL");
 		String sITO = Util.getProperty(path,"ITO");
 		String sETO =  Util.getProperty(path,"ETO");
-		
+		//open in remote system
 		if(useGrid.equalsIgnoreCase("yes"))
 		{
 			test.log(LogStatus.INFO, "Open the "+browser+" Browser in Remote System");
@@ -76,7 +76,7 @@ public abstract class BaseTest implements IAutoConst{
 		
 		else
 		{
-			test.log(LogStatus.INFO, "Open the "+browser+" Browser in Local System");
+			test.log(LogStatus.INFO, "Open the "+browser+" Browser in Local System");//open in local system
 			
 				if(browser.equalsIgnoreCase("chrome"))
 				{
